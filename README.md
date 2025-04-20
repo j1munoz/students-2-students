@@ -1,4 +1,4 @@
-# Students2Stsudents
+# Students2Students
 
 ### For students, by students.
 
