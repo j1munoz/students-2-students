@@ -4,6 +4,6 @@ const Home = () => {
       <p className="text-black">Hello World!</p>
     </div>
   );
-}
+};
 
 export default Home;
