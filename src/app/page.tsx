@@ -1,7 +1,9 @@
+import HomePage from "@/components/home";
+
 const Home = () => {
   return (
-    <div className="bg-amber-100 h-screen w-screen flex justify-center">
-      <p className="text-black">Hello World!</p>
+    <div className="bg-sky-blue h-screen w-screen">
+      <HomePage />
     </div>
   );
 };
