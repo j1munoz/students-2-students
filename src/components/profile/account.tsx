@@ -7,6 +7,9 @@ const Profile = () => {
       <Link href="/signup" className="text-blue-500 underline">
         Go to Signup Page
       </Link>
+      <Link href="/login" className="text-blue-500 underline mt-2">
+        Go to Login Page
+      </Link>
     </div>
   );
 };
