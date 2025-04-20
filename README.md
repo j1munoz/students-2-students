@@ -1,4 +1,6 @@
-# Students2Stsudents
+# Students2Students
+
+### To students, from students.
 
 ### For students, by students.
 
