@@ -17,15 +17,16 @@ app.use(express.json());
 // User Routes
 // Create a new user
 app.post("/users", async (req, res) => {
-  const { email, password, firstName, lastName, credits, major } = req.body;
+  const { email, password, firstName, lastName, major } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = await pool.query(
       "INSERT INTO users (email, password, first_name, last_name, credits, major) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-      [email, hashedPassword, firstName, lastName, credits, major],
+      [email, hashedPassword, firstName, lastName, 0, major],
     );
     res.status(201).json(newUser.rows[0]);
   } catch (err) {
+    console.error("Internal Server Error at POST /users:", err);
     res.status(500).json({ error: err.message });
   }
 });
@@ -42,6 +43,16 @@ app.get("/users/:id", async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     res.json(user.rows[0]);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get all user emails (used for email verification)
+app.get("/users", async (req, res) => {
+  try {
+    const users = await pool.query("SELECT email FROM users");
+    res.json(users.rows);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

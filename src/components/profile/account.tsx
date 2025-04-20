@@ -1,7 +1,12 @@
+import Link from "next/link";
+
 const Profile = () => {
   return (
-    <div className="bg-amber-100 h-screen w-screen flex justify-center">
+    <div className="bg-amber-100 h-screen w-screen flex flex-col justify-center items-center">
       <p className="text-black">Profile Page</p>
+      <Link href="/signup" className="text-blue-500 underline">
+        Go to Signup Page
+      </Link>
     </div>
   );
 };
